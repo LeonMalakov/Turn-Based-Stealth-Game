@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dbfe1e79f496f941a06c724a446c101, type: 3}
+  m_Name: LevelData
+  m_EditorClassIdentifier: 
+  GridWidth: 10
+  GridHeight: 10
+  NotWalkableCells:
+  - _x: 1
+    _z: 2
+  - _x: 2
+    _z: 2
+  - _x: -1
+    _z: 5
+  - _x: -1
+    _z: 6
+  - _x: 4
+    _z: 2
+  - _x: 3
+    _z: 3
+  - _x: 3
+    _z: 4
+  - _x: 4
+    _z: 4
+  - _x: 6
+    _z: 1
+  - _x: 7
+    _z: 3
+  - _x: 8
+    _z: 3
+  PlayerPosition:
+    _x: 2
+    _z: 1
+  PlayerDirection: 0
+  ExitPosition:
+    _x: 1
+    _z: 9
+  Enemies:
+  - Position:
+      _x: 5
+      _z: 5
+    Direction: 5
+    PatrolWaypoints: []
+  - Position:
+      _x: 5
+      _z: 3
+    Direction: 2
+    PatrolWaypoints:
+    - _x: 5
+      _z: 3
+    - _x: 8
+      _z: 1
+  - Position:
+      _x: -1
+      _z: 7
+    Direction: 1
+    PatrolWaypoints:
+    - _x: -1
+      _z: 7
+    - _x: 4
+      _z: 7
+  - Position:
+      _x: 4
+      _z: 1
+    Direction: 0
+    PatrolWaypoints: []

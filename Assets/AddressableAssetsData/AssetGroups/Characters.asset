@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Characters
+  m_EditorClassIdentifier: 
+  m_GroupName: Characters
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 0af711a6dad4a954e9c009a71195acce
+  m_SerializeEntries:
+  - m_GUID: 5a9aefa0406e20444bad27d4059c4f26
+    m_Address: Player
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 6042240461541124776, guid: 5a9aefa0406e20444bad27d4059c4f26, type: 3}
+    m_TargetAsset: {fileID: 6042240461541124776, guid: 5a9aefa0406e20444bad27d4059c4f26, type: 3}
+  - m_GUID: ff5e859df60b58a47b39d8e7b6f5a75e
+    m_Address: Enemy
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 1787894827645006578, guid: ff5e859df60b58a47b39d8e7b6f5a75e, type: 3}
+    m_TargetAsset: {fileID: 1787894827645006578, guid: ff5e859df60b58a47b39d8e7b6f5a75e, type: 3}
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 73558accefef62f4398e337bfa6887c4, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 892f753d5b80d604eb6bc82dd675b7bb, type: 2}
+    - {fileID: 11400000, guid: c26387f2ac1104945bff73758d9e919a, type: 2}
