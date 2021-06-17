@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
@@ -7,8 +8,6 @@ namespace Stls
 {
     public class Game : MonoBehaviour
     {
-        [SerializeField] private LevelData _levelData;
-
         private Level _level;
 
         private Coroutine _waitForEndOfTurnCoroutine;
@@ -19,11 +18,9 @@ namespace Stls
             _level = level;
         }
 
-        private async void Start()
+        public async Task InitAsync(LevelData levelData)
         {
-            Debug.Log("Start");
-            await _level.CreateAsync(_levelData);
-            Debug.Log("Level loaded");
+            await _level.CreateAsync(levelData);
 
             _level.Player.TurnEnded += OnPlayerTurnEnded;
 
@@ -32,7 +29,8 @@ namespace Stls
 
         private void OnDestroy()
         {
-            _level.Player.TurnEnded -= OnPlayerTurnEnded;
+            if(_level.Player != null)
+                _level.Player.TurnEnded -= OnPlayerTurnEnded;
         }
 
 

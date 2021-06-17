@@ -8,6 +8,9 @@ namespace Stls
         [SerializeField] private InputHandler _inputHandler;
         [SerializeField] private Level _level;
         [SerializeField] private Grid _grid;
+        [SerializeField] private Game _game;
+
+        public Game Game => _game;
 
         public override void InstallBindings()
         {
