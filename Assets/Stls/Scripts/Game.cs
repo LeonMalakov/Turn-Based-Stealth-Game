@@ -8,58 +8,58 @@ namespace Stls
 {
     public class Game : MonoBehaviour
     {
-        private Level _level;
+        public Level Level { get; private set; }
 
         private Coroutine _waitForEndOfTurnCoroutine;
+
+        public event Action PlayerWon;
+        public event Action PlayerLost;
 
         [Inject]
         public void Construct(Level level)
         {
-            _level = level;
+            Level = level;
         }
 
         public async Task InitAsync(LevelData levelData)
         {
-            await _level.CreateAsync(levelData);
+            await Level.CreateAsync(levelData);
 
-            _level.Player.TurnEnded += OnPlayerTurnEnded;
+            Level.Player.TurnEnded += OnPlayerTurnEnded;
 
-            EnemiesSightChecker.CheckCellsVisibility(_level.EnemyGroup, _level.Grid);
+            EnemiesSightChecker.CheckCellsVisibility(Level.EnemyGroup, Level.Grid);
         }
 
         private void OnDestroy()
         {
-            if(_level.Player != null)
-                _level.Player.TurnEnded -= OnPlayerTurnEnded;
+            if(Level.Player != null)
+                Level.Player.TurnEnded -= OnPlayerTurnEnded;
         }
 
 
         private void PlayTurn()
         {
-            // Player won.
-            if (_level.Player.Location.Position == _level.LevelData.ExitPosition)
+            if (IsPlayerWon())
             {
-                Debug.Log("GAME: WIN");
+                PlayerWon?.Invoke();
                 return;
             }
 
-            EnemiesSightChecker.CheckTargetsVisibility(_level.Player, _level.EnemyGroup, _level.Grid);
+            EnemiesSightChecker.CheckTargetsVisibility(Level.Player, Level.EnemyGroup, Level.Grid);
 
-            // Move all enemies.
-            _level.EnemyGroup.PlayTurn();
+            Level.EnemyGroup.PlayTurn();
 
+            EnemiesSightChecker.CheckCellsVisibility(Level.EnemyGroup, Level.Grid);
 
-            EnemiesSightChecker.CheckCellsVisibility(_level.EnemyGroup, _level.Grid);
-
-            // Player loose.
-            if (!_level.Player.IsAlive)
+            if (IsPlayerLost())
             {
-                Debug.Log("GAME: LOOSE.");
+                PlayerLost?.Invoke();
                 return;
             }
 
-            _level.Player.StartTurn();
+            Level.Player.StartTurn();
         }
+
 
         private void WaitForEndOfTurn(Action action)
         {
@@ -76,5 +76,9 @@ namespace Stls
         {
             WaitForEndOfTurn(PlayTurn);
         }
+
+        private bool IsPlayerLost() => !Level.Player.IsAlive;
+
+        private bool IsPlayerWon() => Level.Player.Location.Position == Level.LevelData.ExitPosition;
     }
 }

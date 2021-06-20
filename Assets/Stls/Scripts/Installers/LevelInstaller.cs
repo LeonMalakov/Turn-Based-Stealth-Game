@@ -19,8 +19,16 @@ namespace Stls
             BindEnemyFactory();
 
             BindInputHandler();
+            BindGame();
             BindLevel();
             BindGrid();
+        }
+
+        private void BindGame()
+        {
+            Container
+                .Bind<Game>()
+                .FromInstance(_game);
         }
 
         private void BindInputHandler()
